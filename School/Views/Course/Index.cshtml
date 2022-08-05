@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<School.Models.Course>
+
+<div class="row">
+    <h1><i>Lista general de cursos</i></h1>
+    <div>
+        <a asp-action="Create" class="btn btn-success">Create</a>
+    </div>
+    
+</div>
+
+<table class="table" id="course">
+
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Name Course
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var course in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => course.Id)</td>
+            <td>@Html.DisplayFor(modelItem => course.Name)</td>
+            <td>@Html.ActionLink("Edit", "Edit", new { id = course.Id }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("Details", "Details", new { id = course.Id }, new { @class = "btn btn-info" })|
+                @Html.ActionLink("Delete","Delete", new {id = course.Id}, new { @class = "btn btn-danger" })</td>
+        </tr>
+        }
+    </tbody>
+</table>
+@*creacion de ventana modal*@
+
+@section Scripts{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+           
+            $('#course').DataTable({
+                
+                "language": { url: "https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json" }
+            });
+
+        });
+    </script>
+}
+
+

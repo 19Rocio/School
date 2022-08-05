@@ -1,0 +1,53 @@
+﻿@model IEnumerable<School.Models.Grade>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table" id="grade">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+               GRADE
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {Id = item.Id}, new {@class = "btn btn-warning"}) |
+                @Html.ActionLink("Details", "Details", new {Id = item.Id }, new { @class = "btn btn-info"}) |
+                @Html.ActionLink("Delete", "Delete", new { Id = item.Id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@section Scripts{ 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#grade').DataTable({
+
+                "languaje": { url: "https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json" }
+
+            });
+        });
+    </script>
+}
