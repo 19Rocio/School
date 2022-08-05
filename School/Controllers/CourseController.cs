@@ -6,7 +6,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using School.Models;
 using School.Methods;
-using Microsoft.EntityFrameworkCore;
 
 namespace School.Controllers
 {
@@ -75,18 +74,7 @@ namespace School.Controllers
                    
             }
         }
-        //[HttpPost]
-        //public async Task<JsonResult> Crear(Course course)
-        //{
-        //    int result = await CourseMethods.CreateAsync(course);
-        //    return Json(
-        //        new
-        //        {
-        //            data = result
-        //        });
-        //}
-
-        // GET: CourseController/Edit/5
+        
         public async Task<ActionResult> Edit(int id)
         {
             var course = await CourseMethods.GetCourseIdAsync(new Course { Id = id });
@@ -138,11 +126,6 @@ namespace School.Controllers
                 return View(course);
             }
         }
-        [HttpDelete]
-        public async Task<JsonResult> Delete (Course course)
-        {
-            var result = await CourseMethods.DeleteAsync(new Course { Id = course.Id});
-            return Json(new { data = result });
-        }
+        
     }
 }

@@ -8,6 +8,7 @@ namespace School.Models
 {
     public class Grade
     {
+        public Grade() { }
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
