@@ -11,7 +11,7 @@ namespace School.Controllers
     public class StudentController : Controller
     {
         public async Task<IActionResult> Index()
-        {
+        {                        
             var student = await StudentMethods.GetStudentsAsync();
             return View(student);
         }

@@ -16,5 +16,7 @@ namespace School.Models
         public string Gender { get; set; }
         public int GradeId { get; set; }
         public string Comments { get; set; }
+
+        public Grade Grade { get; set; }
     }
 }
