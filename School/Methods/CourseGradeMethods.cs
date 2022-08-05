@@ -38,7 +38,7 @@ namespace School.Methods
             using(var db = new SchoolBD())
             {
                 CourseGrade courseGrade = await db.CourseGrade.FirstOrDefaultAsync(s => s.Id == parameter.Id);
-                db.Remove(courseGrade);
+                db.CourseGrade.Remove(courseGrade);
                 result = await db.SaveChangesAsync();
             }
             return result;
